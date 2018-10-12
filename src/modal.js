@@ -9,7 +9,7 @@ export const modal = {
     modalVue = new Vue({
       el: '#modal-container',
       template: `
-        <div id="modal-container" :class="type + '-modal'">
+        <div id="modal-container" :class="[type + '-modal', classList.join(' ')]">
           <div v-if="visible" class="overlay ga-track" :data-label="'Clicked overlay from ' + type + ' modal'" @click="$emit('close')" key="1"></div>
           <modal v-if="visible" :contentComponent="contentComponent" @close="hide()" :type="type" :htmlContent="htmlContent" :contentData="contentData">
           </modal>
@@ -24,6 +24,7 @@ export const modal = {
         type: 'default',
         htmlContent: '',
         contentData: {},
+        classList: [],
         contentComponent: {},
         onHide: null,
         onShow: null
@@ -45,6 +46,7 @@ export const modal = {
             type: 'default',
             htmlContent: '',
             contentData: {},
+            classList: [],
             contentComponent: {},
             onHide: null,
             onShow: null
